@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Mental Health Connect</title>
+  <link rel="stylesheet" type="text/css" href="stylelogin.css">
+
+  <!-- add a bunch of firebase stuff --->
+   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+   <script type="text/javascript">
+    // configurate?? still using firebase!
+    var config = {
+      apiKey: "AIzaSyC2ciryIbwmLa6df07jueBB5Q7VpbKqpRk",
+      authDomain: "mental-health-44732.firebaseapp.com",
+      databaseURL: "https://mental-health-44732.firebaseio.com",
+      projectId: "mental-health-44732",
+      storageBucket: "mental-health-44732.appspot.com",
+      messagingSenderId: "76750964651"
+    }
+    firebase.initializeApp(config)
+   </script>
+
+
+
+<body>
+  <div class="titlebar">
+  </div>
+  <div class="loginbox">
+    <img src="profile.png" class="profile">
+    <h1>Sign up Here</h1>
+    <div>
+      <p>Username</p>
+      <input type="text" name="" placeholder="Enter Username">
+      <p>Email</p>
+      <input type="text" name="Email" id= "email" placeholder="Enter Username">
+      <p>Certificate #?</p>
+      <input type="text" name="" placeholder="Enter Certificate #">
+      <p>Password</p>
+      <input type="password" name="Password" id="password" placeholder="Enter Password">
+      <button onclick="signup()">signup</button>
+      <a href="./index.html">Back</a>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+     var auth = firebase.auth()
+      var displayName
+      var userEmail
+
+      function signup() {
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+
+        auth.createUserWithEmailAndPassword(email, password).catch(error => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("Error:\n" + errorCode + "\n" + errorMessage)
+        // ...
+      })
+      }
+
+      firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        displayName = user.displayName;
+        userEmail = user.email;
+        console.log(userEmail)
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        // ...
+      } else {
+        // User is signed out.
+        // ...
+      }
+    })
+    </script>
+
+
+
+
+</body>
+</head>
+</html>
