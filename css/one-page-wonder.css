@@ -33,7 +33,13 @@ h6 {
 .rounded-pill {
   border-radius: 5rem;
 }
-
+.logo-img{
+  height:40px;
+  width: 40px;
+  margin-right:20px;
+  margin-left: 0px;
+  padding-left: 0;
+}
 .navbar-custom {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -132,43 +138,6 @@ header.masthead .bg-circle-4 {
     font-size: 4rem;
   }
 }
-/*.button{
-  radius :16px;
-  background-color: #ee0979
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  border-radius: 500px;
-}
-.pointer {
-  width: 200px;
-  height: 40px;
-  position: relative;
-  background: #ee0979;
-}
-.pointer:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px #ee0979;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-}
-.pointer:before {
-  content: "";
-  position: absolute;
-  right: -20px;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px #ee0979;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-}*/
 .bg-primary {
   background-color: #ee0979 !important;
 }
