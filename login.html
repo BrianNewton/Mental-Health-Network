@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Mental Health Connect</title>
+  <link rel="stylesheet" type="text/css" href="stylelogin.css">
+  <!-- add a bunch of firebase stuff --->
+   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase-auth.js"></script>
+   <script type="text/javascript">
+    // configurate?? still using firebase!
+    var config = {
+      apiKey: "AIzaSyC2ciryIbwmLa6df07jueBB5Q7VpbKqpRk",
+      authDomain: "mental-health-44732.firebaseapp.com",
+      databaseURL: "https://mental-health-44732.firebaseio.com",
+      projectId: "mental-health-44732",
+      storageBucket: "mental-health-44732.appspot.com",
+      messagingSenderId: "76750964651"
+    }
+    firebase.initializeApp(config)
+   </script>
+
+<body>
+  <div class="titlebar">
+  </div>
+  <div class="loginbox">
+    <img src="profile.png" class="profile">
+    <h1>Log in Here</h1>
+    <div>
+      <p>Email</p>
+      <input type="text" name="Email" id= "email" placeholder="Enter Username">
+
+      <p>Password</p>
+      <input type="password" name="Password" id="password" placeholder="Enter Password">
+
+  
+      <a onclick="signin()" href=" https://accounts.livechatinc.com/join/10501212/1a5acceb51b9cfc8df7fdba2a6d35178d0a1a2bec89fc5c1?client_id=be4ac276b81af255624473a222e1155c&fbclid=IwAR3DWVaFbwLpLn4GWMVr9I52HR9XjTlNI4EQgRytTGmkVbGIMECbINrHV5Q&redirect_uri=https%3A%2F%2Faccounts.livechatinc.com%2Fdispatcher&response_type=code">Log in </a>
+      <div>
+      <a href="signup.html">Need to sign up?</a>
+      </div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+      var auth = firebase.auth()
+      var displayName
+      var userEmail
+
+      function signin() {
+        const email = document.getElementById('email').value
+        const password = document.getElementById('password').value
+
+        auth.signInWithEmailAndPassword(email, password).catch(error => {
+        var errorCode = error.code
+        var errorMessage = error.message
+
+        console.log("Oh noes. An Error has occurred :(((\nCode: " + errorCode + "\nMessage: " + errorMessage)
+      })
+      }
+
+     
+
+      firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        displayName = user.displayName;
+        userEmail = user.email;
+        console.log(userEmail)
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        // ...
+      } else {
+        // User is signed out.
+        // ...
+      }
+    })
+    </script>
+
+
+</body>
+</head>
+</html>
